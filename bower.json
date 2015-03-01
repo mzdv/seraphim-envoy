@@ -1,0 +1,12 @@
+{
+  "name": "seraphim-envoy",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "socket.io-client": "~1.3.2"
+  }
+}

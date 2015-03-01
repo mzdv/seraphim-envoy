@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+var debug = require('debug')('expressapp');
+var app = require('../app');
+var subscriber = require("../redis/subscriber");
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+});
+
+var io = require("socket.io")(server);
+
+io.on("connection", function(socket) {
+    subscriber.on("message", function(channel, message) {
+        switch(channel) {
+            case "http":
+                socket.emit("http", JSON.parse(message));
+                break;
+            case "net":
+                socket.emit("net", JSON.parse(message));
+                break;
+            case "system":
+                socket.emit("system", JSON.parse(message));
+                break;
+        }
+    });
+});
