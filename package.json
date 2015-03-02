@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Application server used for monitoring API transactions with [seraphim-envoy-middleware](https://github.com/mzdv/seraphim-envoy-middleware)",
   "author": "Milos Zivadinovic <mzdv@outlook.com>",
+  "repository": "https://github.com/mzdv/seraphim-envoy",
 
   "dependencies": {
     "body-parser": "~1.10.0",

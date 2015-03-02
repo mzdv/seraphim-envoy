@@ -1,0 +1,77 @@
+<% include layout.ejs %>
+
+<p>Current time and date:</p>
+<div id="currentTime">000</div>
+
+<div class="http">
+    <h3>Last request</h3>
+    <div id="lastRequest">request</div>
+    <h3>From</h3>
+    <div id="from">xyz</div>
+    <h3>To</h3>
+    <div id="to">zyx</div>
+    <h3>Headers</h3>
+    <div id="headers">headers</div>
+    <h3>Content</h3>
+    <div id="content">content</div>
+    <h3>Time</h3>
+    <div id="httpTime">content</div>
+</div>
+<div class="net">
+    <h3>Active network interfaces</h3>
+    <div id="networkInterface">ethx</div>
+    <h3>Transport of data</h3>
+    <div id="transport">xcoming</div>
+    <h3>Time</h3>
+    <div id="netTime">time</div>
+</div>
+<div class="system">
+    <h3>Flag</h3>
+    <div id="flag">someFlag</div>
+    <h3>Data</h3>
+    <div id="data">someData</div>
+    <h3>Time</h3>
+    <div id="systemTime">time</div>
+</div>
+<script src="/components/socket.io-client/socket.io.js"></script>
+<script>
+    var currentTime = document.getElementById("currentTime");
+    setInterval(function() {
+        currentTime.innerHTML = new Date();
+    }, 1000);
+
+    var socket = io.connect("http://localhost:3000");
+    socket.on("http", function(data) {
+        var field = document.getElementById("lastRequest");
+        field.innerHTML = data.request;
+        field = document.getElementById("from");
+        field.innerHTML = data.from;
+        field = document.getElementById("to");
+        field.innerHTML = data.to;
+        field = document.getElementById("headers");
+        field.innerHTML = data.headers;
+        field = document.getElementById("content");
+        field.innerHTML = data.content;
+        field = document.getElementById("httpTime");
+        field.innerHTML = data.created;
+    });
+    socket.on("net", function(data) {
+        var field = document.getElementById("networkInterface");
+        field.innerHTML = data.networkInterface;
+        field = document.getElementById("transport");
+        field.innerHTML = data.transport;
+        field = document.getElementById("netTime");
+        field.innerHTML = data.created;
+    });
+    socket.on("system", function(data) {
+        var field = document.getElementById("flag");
+        field.innerHTML = data.flag;
+        field = document.getElementById("data");
+        field.innerHTML = data.data;
+        field = document.getElementById("systemTime");
+        field.innerHTML = data.created;
+    });
+</script>
+
+</body>
+</html>
