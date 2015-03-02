@@ -36,6 +36,7 @@
 <script src="/components/socket.io-client/socket.io.js"></script>
 <script>
     var currentTime = document.getElementById("currentTime");
+    currentTime.innerHTML = new Date();
     setInterval(function() {
         currentTime.innerHTML = new Date();
     }, 1000);
