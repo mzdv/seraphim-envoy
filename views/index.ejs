@@ -19,6 +19,19 @@
     <div id="httpTime"></div>
 </div>
 
+<div class="counters">
+    <h3>GET</h3>
+    <div id="getCounter"></div>
+    <h3>POST</h3>
+    <div id="postCounter"></div>
+    <h3>PUT</h3>
+    <div id="putCounter"></div>
+    <h3>PATCH</h3>
+    <div id="patchCounter"></div>
+    <h3>DELETE</h3>
+    <div id="deleteCounter"></div>
+</div>
+
 <script src="/components/socket.io-client/socket.io.js"></script>
 <script>
     var currentTime = document.getElementById("currentTime");
@@ -27,10 +40,48 @@
         currentTime.innerHTML = new Date();
     }, 1000);
 
+    var counter = {
+        getCounter: 0,
+        postCounter: 0,
+        putCounter: 0,
+        patchCounter: 0,
+        deleteCounter: 0
+    };
+
+    var incrementCounter = function(request) {
+//        _.forEach(["GET", "POST", "PUT", "PATCH", "DELETE"], function(n) {
+//            if(request === n) {
+//                counter[n]++;
+//            }
+//        });
+
+        switch(request) {
+            case "GET":
+                document.getElementById("getCounter").innerHTML = counter.getCounter++;
+                break;
+
+            case "POST":
+                document.getElementById("postCounter").innerHTML = counter.postCounter++;
+                break;
+
+            case "PUT":
+                document.getElementById("putCounter").innerHTML = counter.putCounter++;
+                break;
+
+            case "PATCH":
+                document.getElementById("patchCounter").innerHTML = counter.patchCounter++;
+                break;
+
+            case "DELETE":
+                document.getElementById("deleteCounter").innerHTML = counter.deleteCounter++;
+                break;
+        }
+    }
     var socket = io.connect("http://localhost:3000");
     socket.on("http", function(data) {
         var field = document.getElementById("lastRequest");
         field.innerHTML = data.request;
+        incrementCounter(data.request);
         field = document.getElementById("from");
         field.innerHTML = data.from;
         field = document.getElementById("to");
