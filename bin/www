@@ -2,6 +2,7 @@
 var debug = require('debug')('expressapp');
 var app = require('../app');
 var subscriber = require("../redis/subscriber");
+var mongoose = require("mongoose");
 
 app.set('port', process.env.PORT || 3000);
 
@@ -13,6 +14,9 @@ var io = require("socket.io")(server);
 
 io.on("connection", function(socket) {
     subscriber.on("message", function(channel, message) {
+        var counter = {};
+
         socket.emit("http", JSON.parse(message));
+        socket.emit("counter", JSON.parse(counter));
     });
 });
