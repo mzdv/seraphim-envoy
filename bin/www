@@ -13,16 +13,6 @@ var io = require("socket.io")(server);
 
 io.on("connection", function(socket) {
     subscriber.on("message", function(channel, message) {
-        switch(channel) {
-            case "http":
-                socket.emit("http", JSON.parse(message));
-                break;
-            case "net":
-                socket.emit("net", JSON.parse(message));
-                break;
-            case "system":
-                socket.emit("system", JSON.parse(message));
-                break;
-        }
+        socket.emit("http", JSON.parse(message));
     });
 });

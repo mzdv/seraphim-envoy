@@ -40,7 +40,7 @@
         currentTime.innerHTML = new Date();
     }, 1000);
 
-    var counter = {
+    var counter = {         // this will be refactored
         getCounter: 0,
         postCounter: 0,
         putCounter: 0,
@@ -49,11 +49,6 @@
     };
 
     var incrementCounter = function(request) {
-//        _.forEach(["GET", "POST", "PUT", "PATCH", "DELETE"], function(n) {
-//            if(request === n) {
-//                counter[n]++;
-//            }
-//        });
 
         switch(request) {
             case "GET":
@@ -81,7 +76,9 @@
     socket.on("http", function(data) {
         var field = document.getElementById("lastRequest");
         field.innerHTML = data.request;
+
         incrementCounter(data.request);
+
         field = document.getElementById("from");
         field.innerHTML = data.from;
         field = document.getElementById("to");
