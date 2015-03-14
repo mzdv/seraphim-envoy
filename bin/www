@@ -2,7 +2,8 @@
 var debug = require('debug')('expressapp');
 var app = require('../app');
 var subscriber = require("../redis/subscriber");
-var mongoose = require("mongoose");
+
+var total = 0;
 
 app.set('port', process.env.PORT || 3000);
 
