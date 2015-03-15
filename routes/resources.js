@@ -23,7 +23,7 @@ router.post('/http', function(req, res) {
     });
 
 
-    clientBackend.publish("http", JSON.stringify(data));
+    clientBackend.publish("http", JSON.stringify(data));        // place for async module :)
 
     data.save(function(err) {
         if(err) {

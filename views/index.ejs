@@ -114,6 +114,16 @@
         field = document.getElementById("content");
         field.innerHTML = data.content;
     });
+
+    setInterval(function() {
+        var totalRequests = {
+            requests: counter.totalCounter(),
+            timestamp: new Date()
+        };
+
+        socket.emit("totalRequests", JSON.stringify(totalRequests));
+    }, 5000);
+
 </script>
 
 </body>

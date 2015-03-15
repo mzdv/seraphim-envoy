@@ -2,8 +2,7 @@
 var debug = require('debug')('expressapp');
 var app = require('../app');
 var subscriber = require("../redis/subscriber");
-
-var total = 0;
+var totalRequests = require("../models/totalRequests");
 
 app.set('port', process.env.PORT || 3000);
 
@@ -17,4 +16,19 @@ io.on("connection", function(socket) {
     subscriber.on("message", function(channel, message) {
         socket.emit("http", JSON.parse(message));
     });
+
+    socket.on("totalRequests", function(data) {
+        var parsedData = JSON.parse(data);
+
+        var modelInstance = new totalRequests({
+            requests: parsedData.requests,
+            timestamp: parsedData.timestamp
+        });
+
+        modelInstance.save(function(err) {
+            if(err) {
+                console.log(err);
+            }
+        });
+    })
 });
