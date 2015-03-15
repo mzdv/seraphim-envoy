@@ -17,7 +17,7 @@ io.on("connection", function(socket) {
         socket.emit("http", JSON.parse(message));
     });
 
-    socket.on("totalRequests", function(data) {
+    socket.on("totalRequests", function(data) {     //TO-DO: Caching
         var parsedData = JSON.parse(data);
 
         var modelInstance = new totalRequests({

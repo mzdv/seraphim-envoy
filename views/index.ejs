@@ -67,7 +67,7 @@
         }
     };
 
-    var updateVerbs = function(data) {
+    var updateVerbs = function(data) {      //TO-DO: Refactoring functional style
         switch(data.request) {
             case "GET":
                 document.getElementById("getCounter").innerHTML = ++counter.getCounter;
@@ -105,7 +105,7 @@
 
         updateVerbs(data);
 
-        field = document.getElementById("from");
+        field = document.getElementById("from");        //TO-DO: Refactoring functional style
         field.innerHTML = data.from;
         field = document.getElementById("to");
         field.innerHTML = data.to;
@@ -115,7 +115,7 @@
         field.innerHTML = data.content;
     });
 
-    setInterval(function() {
+    setInterval(function() {        //TO-DO: Caching
         var totalRequests = {
             requests: counter.totalCounter(),
             timestamp: new Date()

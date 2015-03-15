@@ -9,7 +9,7 @@ clientBackend = redis.createClient();
 
 var async = require("async");
 
-mongoose.connect("mongodb://localhost:27017/seraphim-reborn", function(err) {
+mongoose.connect("mongodb://localhost:27017/seraphim-envoy", function(err) {
     if(err)
         console.log(err);
 });
