@@ -7,6 +7,8 @@ var router = express.Router();
 var redis = require("redis");
 clientBackend = redis.createClient();
 
+var async = require("async");
+
 mongoose.connect("mongodb://localhost:27017/seraphim-reborn", function(err) {
     if(err)
         console.log(err);
@@ -22,15 +24,23 @@ router.post('/http', function(req, res) {
         content: req.body.content
     });
 
-
-    clientBackend.publish("http", JSON.stringify(data));        // place for async module :)
-
-    data.save(function(err) {
-        if(err) {
-            res.status(500).end();
+    async.parallel([
+        function(callback) {
+            clientBackend.publish("http", JSON.stringify(data));        // place for async module :)
+        },
+        function(callback) {
+            data.save(function(err) {
+                if(err) {
+                    res.status(500).end();
+                }
+                res.status(200).end();
+            });
         }
-        res.status(200).end();
+    ], function(err) {
+        if(err)
+            return next(err)
     });
+
 });
 
 module.exports = router;

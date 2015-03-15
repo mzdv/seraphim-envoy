@@ -120,7 +120,6 @@
             requests: counter.totalCounter(),
             timestamp: new Date()
         };
-
         socket.emit("totalRequests", JSON.stringify(totalRequests));
     }, 5000);
 
