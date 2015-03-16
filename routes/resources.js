@@ -1,3 +1,5 @@
+"use strict";
+
 var mongoose = require("mongoose");
 var httpModel = require("../models/http");
 
@@ -5,7 +7,7 @@ var express = require('express');
 var router = express.Router();
 
 var redis = require("redis");
-clientBackend = redis.createClient();
+var clientBackend = redis.createClient();
 
 var async = require("async");
 
@@ -26,7 +28,7 @@ router.post('/http', function(req, res) {
 
     async.parallel([
         function(callback) {
-            clientBackend.publish("http", JSON.stringify(data));        // place for async module :)
+            clientBackend.publish("http", JSON.stringify(data));
         },
         function(callback) {
             data.save(function(err) {

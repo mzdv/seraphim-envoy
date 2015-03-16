@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+"use strict";
+
 var debug = require('debug')('expressapp');
 var app = require('../app');
 var subscriber = require("../redis/subscriber");

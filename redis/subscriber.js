@@ -1,5 +1,7 @@
+"use strict";
+
 var redis = require("redis");
-subscriber = redis.createClient();
+var subscriber = redis.createClient();
 
 subscriber.subscribe("http");
 
