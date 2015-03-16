@@ -71,8 +71,7 @@
     };
     var previousCount;
 
-    var updateVerbs = function(data) {      //TO-DO: Refactoring functional style (or something prettier than this)
-
+    var updateVerbs = function(data) {
         if(_.includes["GET", "POST", "PUT", "PATCH", "DELETE"], data.request) {
             var verb = data.request.toLowerCase();
             document.getElementById(verb + "Counter").innerHTML = ++counter[verb + "Counter"];
