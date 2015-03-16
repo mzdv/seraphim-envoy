@@ -66,6 +66,7 @@
             return this.getCounter + this.postCounter + this.putCounter + this.patchCounter + this.deleteCounter;
         }
     };
+    var previousCount;
 
     var updateVerbs = function(data) {      //TO-DO: Refactoring functional style
         switch(data.request) {
@@ -115,12 +116,16 @@
         field.innerHTML = data.content;
     });
 
-    setInterval(function() {        //TO-DO: Caching
-        var totalRequests = {
-            requests: counter.totalCounter(),
-            timestamp: new Date()
-        };
-        socket.emit("totalRequests", JSON.stringify(totalRequests));
+    setInterval(function() {
+        if(previousCount !== counter.totalCounter()) {
+            var totalCounter = counter.totalCounter();
+            var totalRequests = {
+                requests: totalCounter,
+                timestamp: new Date()
+            };
+            previousCount = totalCounter;
+            socket.emit("totalRequests", JSON.stringify(totalRequests));
+        }
     }, 5000);
 
 </script>
