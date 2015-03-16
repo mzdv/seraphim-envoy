@@ -72,33 +72,13 @@
     var previousCount;
 
     var updateVerbs = function(data) {      //TO-DO: Refactoring functional style (or something prettier than this)
-        switch(data.request) {
-            case "GET":
-                document.getElementById("getCounter").innerHTML = ++counter.getCounter;
-                document.getElementById("getTime").innerHTML = data.created;
-                break;
 
-            case "POST":
-                document.getElementById("postCounter").innerHTML = ++counter.postCounter;
-                document.getElementById("postTime").innerHTML = data.created;
-                break;
-
-            case "PUT":
-                document.getElementById("putCounter").innerHTML = ++counter.putCounter;
-                document.getElementById("putTime").innerHTML = data.created;
-                break;
-
-            case "PATCH":
-                document.getElementById("patchCounter").innerHTML = ++counter.patchCounter;
-                document.getElementById("patchTime").innerHTML = data.created;
-                break;
-
-            case "DELETE":
-                document.getElementById("deleteCounter").innerHTML = ++counter.deleteCounter;
-                document.getElementById("deleteTime").innerHTML = data.created;
-                break;
+        if(_.includes["GET", "POST", "PUT", "PATCH", "DELETE"], data.request) {
+            var verb = data.request.toLowerCase();
+            document.getElementById(verb + "Counter").innerHTML = ++counter[verb + "Counter"];
+            document.getElementById(verb + "Time").innerHTML = data.created;
+            document.getElementById("totalCounter").innerHTML = counter.totalCounter();
         }
-        document.getElementById("totalCounter").innerHTML = counter.totalCounter();
     }
 
     var socket = io.connect("http://localhost:3000");
