@@ -6,7 +6,7 @@
 
 <div class="http">
     <h3>Last request</h3>
-    <div id="lastRequest"></div>
+    <div id="request"></div>
     <h3>From</h3>
     <div id="from"></div>
     <h3>To</h3>
@@ -50,7 +50,10 @@
 </div>
 
 <script src="/components/socket.io-client/socket.io.js"></script>
+<script src="/components/lodash/lodash.min.js"></script>
 <script>
+    "use strict";
+
     document.getElementById("currentTime").innerHTML = new Date();
     setInterval(function() {
         currentTime.innerHTML = new Date();
@@ -68,7 +71,7 @@
     };
     var previousCount;
 
-    var updateVerbs = function(data) {      //TO-DO: Refactoring functional style
+    var updateVerbs = function(data) {      //TO-DO: Refactoring functional style (or something prettier than this)
         switch(data.request) {
             case "GET":
                 document.getElementById("getCounter").innerHTML = ++counter.getCounter;
@@ -101,19 +104,11 @@
     var socket = io.connect("http://localhost:3000");
     socket.on("http", function(data) {
 
-        var field = document.getElementById("lastRequest");
-        field.innerHTML = data.request;
-
         updateVerbs(data);
 
-        field = document.getElementById("from");        //TO-DO: Refactoring functional style
-        field.innerHTML = data.from;
-        field = document.getElementById("to");
-        field.innerHTML = data.to;
-        field = document.getElementById("headers");
-        field.innerHTML = data.headers;
-        field = document.getElementById("content");
-        field.innerHTML = data.content;
+        _.forEach(["request", "from", "to", "headers", "content"], function(n) {
+            document.getElementById(n).innerHTML = data[n];
+        });
     });
 
     setInterval(function() {
