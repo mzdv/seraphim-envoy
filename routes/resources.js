@@ -16,7 +16,8 @@ mongoose.connect("mongodb://localhost:27017/seraphim-envoy", function(err) {
         console.log(err);
 });
 
-// POST /http used for http data (requests incoming etc etc)
+//POST /http
+//Main access point for gathering data
 router.post('/http', function(req, res) {
     var data = new httpModel({
         request: req.body.request,
