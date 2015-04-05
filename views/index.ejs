@@ -53,6 +53,13 @@
 <script src="/components/lodash/lodash.min.js"></script>
 <script>
     "use strict";
+    var verbs = [
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE'
+    ];
 
     document.getElementById("currentTime").innerHTML = new Date();
     setInterval(function() {
@@ -72,7 +79,7 @@
     var previousCount;
 
     var updateVerbs = function(data) {
-        if(_.includes["GET", "POST", "PUT", "PATCH", "DELETE"], data.request) {
+        if(_.includes(verbs, data.request)) {
             var verb = data.request.toLowerCase();
             document.getElementById(verb + "Counter").innerHTML = ++counter[verb + "Counter"];
             document.getElementById(verb + "Time").innerHTML = data.created;
