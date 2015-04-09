@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var express = require('express');
 var path = require('path');
@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var resources = require('./routes/resources');
+
+require('node-jsx').install();
 
 var app = express();
 
@@ -51,8 +53,7 @@ if (app.get('env') === 'development') {
             title: 'error'
         });
     });
-}
-else {
+} else {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {

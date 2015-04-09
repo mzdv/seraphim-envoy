@@ -1,7 +1,11 @@
-var gulp = require('gulp'),
-  nodemon = require('gulp-nodemon'),
-  livereload = require('gulp-livereload');
+var gulp = require('gulp');
+var nodemon = require('gulp-nodemon');
+var livereload = require('gulp-livereload');
 
+//React stuff
+var watchify = require('watchify');
+var browserify = require('browserify');
+var reactify = require('reactify');
 
 gulp.task('develop', function () {
   livereload.listen();
