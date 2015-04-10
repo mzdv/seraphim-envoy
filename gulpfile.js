@@ -1,13 +1,10 @@
 var gulp = require('gulp');
+var path = require('path');
+
 var nodemon = require('gulp-nodemon');
 var livereload = require('gulp-livereload');
 var watch = require('gulp-watch');
-var path = require('path');
-
-//React stuff
-var watchify = require('watchify');
-var browserify = require('browserify');
-var reactify = require('reactify');
+var browserify = require('gulp-browserify');
 
 gulp.task('watch', function() {
     gulp.src(__dirname)
@@ -15,6 +12,15 @@ gulp.task('watch', function() {
         .pipe(watch(path.join(__dirname, '/public/js')))
         .pipe(watch(path.join(__dirname, '/views')))
         .pipe(livereload());
+});
+
+gulp.task('react', function() {
+    gulp.src(['bin/main.js'])                                   // try some refactoring here
+        .pipe(browserify({
+            debug: true,
+            transform: ['reactify']
+        }))
+        .pipe(gulp.dest(path.join(__dirname, '/public/js')))    // and here
 });
 
 gulp.task('restart', function () {
@@ -29,9 +35,8 @@ gulp.task('restart', function () {
   });
 });
 
-
-
 gulp.task('default', [
     'watch',
+    'react',
     'restart'
 ]);
