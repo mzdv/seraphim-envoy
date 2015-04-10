@@ -24,6 +24,7 @@
     "gulp": "~3.8.10",
     "gulp-livereload": "~3.4.0",
     "gulp-nodemon": "~1.0.4",
+    "gulp-watch": "^4.2.4",
     "mocha": "*",
     "reactify": "^1.1.0",
     "should": "^4.6.2",
