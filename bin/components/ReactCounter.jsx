@@ -3,15 +3,15 @@ var React = require('react');
 var ReactTitle = React.createClass({
    render: function() {
        return(
-         React.createElement('div', {className: 'title'},'')
+         React.createElement('div', {className: 'title'}, this.props.title)
        );
    }
 });
 
-var ReactCounter = React.createClass({
+var ReactData = React.createClass({
     render: function() {
         return(
-            React.createElement('div', {className: 'counter'},'')
+            React.createElement('div', {className: 'counter'}, this.props.data)
         );
     }
 });
@@ -19,7 +19,7 @@ var ReactCounter = React.createClass({
 var ReactTimestamp = React.createClass({
     render: function() {
         return(
-            React.createElement('div', {className: 'title'},'')
+            React.createElement('div', {className: 'title'}, this.props.timestamp)
         );
     }
 });
@@ -28,11 +28,11 @@ var ReactCounter = React.createClass({
     render: function() {
         return(
             <div class="counterBlock">
-                <ReactTitle />
-                <ReactCounter />
+                <ReactTitle />          // figure out a way to bind data here from the backend
+                <ReactData />
                 <ReactTimestamp />
             </div>
-        )
+        );
     }
 });
 
