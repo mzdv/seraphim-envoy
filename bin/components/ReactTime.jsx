@@ -1,7 +1,11 @@
 var react = require('react');
 
 var ReactTime = react.createClass({
-    // TO-DO: Logic for the timer
+    render: function() {
+        return(
+            React.createElement('div', {id: 'entry'}, this.props.description)
+        );
+    }
 });
 
 module.exports = ReactTime;
