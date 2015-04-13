@@ -20,7 +20,7 @@ gulp.task('react', function() {
             debug: true,
             transform: ['reactify']
         }))
-        .pipe(gulp.dest(path.join(__dirname, '/public/js')))    // and here
+        .pipe(gulp.dest(path.join(__dirname, '/public/js')));   // and here
 });
 
 gulp.task('restart', function () {

@@ -1,6 +1,6 @@
-var react = require('react');
+var React = require('react');
 
-var ReactTime = react.createClass({
+var ReactTime = React.createClass({
     render: function() {
         return(
             React.createElement('div', {id: 'entry'}, this.props.description)

@@ -1,6 +1,3 @@
-/**
- * Created by Milos on 31.1.2015..
- */
 var supertest = require("supertest");
 
 describe("Routes", function() {
