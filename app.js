@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var resources = require('./routes/resources');
 
-require('node-jsx').install();
+
 
 var app = express();
 
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

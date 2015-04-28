@@ -1,8 +1,8 @@
 var React = require('react');
 
-var ReactCounter = require('./ReactCounter.jsx');
-var ReactHeader = require('./ReactHeader.jsx');
-var ReactTime = require('./ReactTime.jsx');
+var ReactCounter = React.createFactory(require('./ReactCounter.jsx'));
+var ReactHeader = React.createFactory(require('./ReactHeader.jsx'));
+var ReactTime = React.createFactory(require('./ReactTime.jsx'));
 
 
 var Title = React.createClass({

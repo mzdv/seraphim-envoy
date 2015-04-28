@@ -5,6 +5,9 @@ var nodemon = require('gulp-nodemon');
 var livereload = require('gulp-livereload');
 var watch = require('gulp-watch');
 var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
+var preprocess = require('gulp-preprocess');
+var reactify = require('reactify');
 
 gulp.task('watch', function() {
     gulp.src(__dirname)
@@ -15,12 +18,12 @@ gulp.task('watch', function() {
 });
 
 gulp.task('react', function() {
-    gulp.src(['bin/main.js'])                                   // try some refactoring here
+    gulp.src([path.join(__dirname,'/bin/app.js')])
         .pipe(browserify({
             debug: true,
-            transform: ['reactify']
+            transform: [reactify]
         }))
-        .pipe(gulp.dest(path.join(__dirname, '/public/js')));   // and here
+        .pipe(gulp.dest(path.join(__dirname, '/public/js')));
 });
 
 gulp.task('restart', function () {
