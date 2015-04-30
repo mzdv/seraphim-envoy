@@ -1,17 +1,15 @@
 var React = require('react');
 
 var ReactTime = React.createClass({
-    x: (new Date()).toString(),
 
     getInitialState: function() {
        return ({
-           currentTime: 0
+           currentTime: null
        })
     },
 
     componentDidMount: function() {
-        //this.tick();                                  // WHY WON'T THIS FUCKER WORK
-        this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 1000) ;
     },
 
     tick: function() {
