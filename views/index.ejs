@@ -1,9 +1,8 @@
 <% include layout.ejs %>
 
 <h1><%= title %></h1>
-<div id="content">
-    <%- markup %>
-</div>
+<div id="content"><%- markup %></div>
+
 <p>Current time and date:</p>   <!-- ReactTime -->
 <div id="currentTime"></div>
 
@@ -54,6 +53,7 @@
 
 <script src="/components/socket.io-client/socket.io.js"></script>
 <script src="/components/lodash/lodash.min.js"></script>
+<script src="js/app.js"></script>
 <script>
     'use strict';
 
@@ -65,10 +65,10 @@
         'DELETE'
     ];
 
-    document.getElementById("currentTime").innerHTML = new Date();
-    setInterval(function() {
-        currentTime.innerHTML = new Date();
-    }, 1000);
+    // document.getElementById("currentTime").innerHTML = new Date();
+    // setInterval(function() {
+    //     currentTime.innerHTML = new Date();
+    // }, 1000);
 
     var counter = {
         getCounter: 0,

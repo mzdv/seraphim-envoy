@@ -8,7 +8,9 @@ var ReactTime = require('./ReactTime.jsx');
 var Title = React.createClass({
     render: function() {
         return(
-          React.createElement('h1', null, this.props.appTitle)
+          <h1>
+              {this.props.appTitle}
+          </h1>
         );
     }
 });
@@ -17,7 +19,8 @@ var ReactApp = React.createClass({
     render: function() {
         return(
             <div className="frontend">
-                <Title appTitle="Seraphim Envoy"/>
+                <Title appTitle="Seraphim Envoy" />
+
                 <ReactTime />
 
                 <ReactHeader />

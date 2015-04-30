@@ -19,6 +19,7 @@ gulp.task('watch', function() {
 
 gulp.task('react', function() {
     gulp.src([path.join(__dirname,'/bin/app.js')])
+        .pipe(watch(path.join(__dirname,'/bin/app.js')))
         .pipe(browserify({
             debug: true,
             transform: [reactify]

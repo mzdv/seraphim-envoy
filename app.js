@@ -1,3 +1,5 @@
+/// <reference path="typings/node/node.d.ts"/>
+
 'use strict';
 
 var express = require('express');
@@ -9,8 +11,6 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var resources = require('./routes/resources');
-
-
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+require('node-jsx').install();
 app.use('/', index);
 app.use('/resources', resources);
 

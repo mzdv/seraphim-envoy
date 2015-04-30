@@ -27,8 +27,8 @@ var Timestamp = React.createClass({
 var ReactCounter = React.createClass({
     render: function() {
         return(
-            <div class="counterBlock">
-                <CounterTitle />          // figure out a way to bind data here from the backend
+            <div className="counterBlock">
+                <CounterTitle />
                 <FreshData />
                 <Timestamp />
             </div>

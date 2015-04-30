@@ -76,3 +76,5 @@ build/Release
 node_modules
 
 public/components
+.settings
+typings
