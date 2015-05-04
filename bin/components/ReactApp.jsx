@@ -2,7 +2,6 @@ var React = require('react');
 
 var ReactCounter = require('./ReactCounter.jsx');
 var ReactHeader = require('./ReactHeader.jsx');
-var ReactTime = require('./ReactTime.jsx');
 
 
 var Title = React.createClass({
@@ -21,13 +20,11 @@ var ReactApp = React.createClass({
             <div className="frontend">
                 <Title appTitle="Seraphim Envoy" />
 
-                <ReactTime />
-
-                <ReactHeader />
-                <ReactHeader />
-                <ReactHeader />
-                <ReactHeader />
-                <ReactHeader />
+                <ReactHeader name="Last request" description=""/>
+                <ReactHeader name="From" description=""/>
+                <ReactHeader name="To" description=""/>
+                <ReactHeader name="Headers" description=""/>
+                <ReactHeader name="Content" description=""/>
 
                 <ReactCounter />
                 <ReactCounter />
