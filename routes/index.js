@@ -14,8 +14,7 @@ var App = React.createFactory(require('../bin/components/ReactApp.jsx'));
 router.get('/', function(req, res) {
     var markup = React.renderToString(App());
     res.render("index", {
-        markup: markup,
-        title: "seraphim-envoy"
+        markup: markup
     });
 });
 

@@ -3,7 +3,9 @@ var React = require('react');
 var Field = React.createClass({
     render: function() {
         return(
-            <h3>{this.props.name}</h3>
+            <h3>
+                {this.props.name}
+            </h3>
         );
     }
 });
@@ -12,7 +14,7 @@ var Descriptor = React.createClass({
     render: function() {
         return(
             <div id="entry">
-                {this.props.description}
+                {this.props.value}
             </div>
         );
     }
@@ -23,7 +25,7 @@ var ReactHeader = React.createClass({
         return(
             <div className="headerBlock">
                 <Field name={this.props.name}/>
-                <Descriptor description={this.props.description}/>
+                <Descriptor value={this.props.value}/>
             </div>
         );
     }

@@ -1,25 +1,21 @@
 var React = require('react');
 
-var CounterTitle = React.createClass({
+var Title = React.createClass({
     render: function() {
         return(
-            React.createElement('h3', null, this.props.title)
+            <h3>
+                {this.props.title}
+            </h3>
         );
     }
 });
 
-var FreshData = React.createClass({
+var Counter = React.createClass({
     render: function() {
         return(
-            React.createElement('div', {id: this.props.id}, this.props.data)
-        );
-    }
-});
-
-var Timestamp = React.createClass({
-    render: function() {
-        return(
-            React.createElement('div', {id: this.props.id}, this.props.timestamp)
+            <div id={this.props.verb}>
+                {this.props.value}
+            </div>
         );
     }
 });
@@ -27,10 +23,9 @@ var Timestamp = React.createClass({
 var ReactCounter = React.createClass({
     render: function() {
         return(
-            <div className="counterBlock">
-                <CounterTitle />
-                <FreshData />
-                <Timestamp />
+            <div className="requestCounter">
+                <Title title={this.props.verb + ':'}/>
+                <Counter verb={this.props.verb} value={this.props.value}/>
             </div>
         );
     }

@@ -20,17 +20,21 @@ var ReactApp = React.createClass({
             <div className="frontend">
                 <Title appTitle="Seraphim Envoy" />
 
-                <ReactHeader name="Last request" description=""/>
-                <ReactHeader name="From" description=""/>
-                <ReactHeader name="To" description=""/>
-                <ReactHeader name="Headers" description=""/>
-                <ReactHeader name="Content" description=""/>
+                <h3>Current stats:</h3>
 
-                <ReactCounter />
-                <ReactCounter />
-                <ReactCounter />
-                <ReactCounter />
-                <ReactCounter />
+                <ReactHeader name="Last request" value=""/>
+                <ReactHeader name="From" value=""/>
+                <ReactHeader name="To" value=""/>
+                <ReactHeader name="Headers" value=""/>
+                <ReactHeader name="Content" value=""/>
+
+                <h3>Counters:</h3>
+
+                <ReactCounter verb="GET" value="" />
+                <ReactCounter verb="POST" value="" />
+                <ReactCounter verb="PUT" value="" />
+                <ReactCounter verb="PATCH" value="" />
+                <ReactCounter verb="DELETE" value="" />
 
             </div>
         );
