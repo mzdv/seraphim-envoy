@@ -1,8 +1,7 @@
 var React = require('react');
 
-var ReactCounter = require('./ReactCounter.jsx');
-var ReactHeader = require('./ReactHeader.jsx');
-
+var Pillbox = require('./Pillbox.jsx');
+var Graph = require('./Graph.jsx');
 
 var Title = React.createClass({
     render: function() {
@@ -20,21 +19,24 @@ var ReactApp = React.createClass({
             <div className="frontend">
                 <Title appTitle="Seraphim Envoy" />
 
-                <h3>Current stats:</h3>
+                <h3>Current stats</h3>
 
-                <ReactHeader name="Last request" value=""/>
-                <ReactHeader name="From" value=""/>
-                <ReactHeader name="To" value=""/>
-                <ReactHeader name="Headers" value=""/>
-                <ReactHeader name="Content" value=""/>
+                <Pillbox name="Last request" value=""/>
+                <Pillbox name="From" value=""/>
+                <Pillbox name="To" value=""/>
+                <Pillbox name="Headers" value=""/>
+                <Pillbox name="Content" value=""/>
 
                 <h3>Counters:</h3>
 
-                <ReactCounter verb="GET" value="" />
-                <ReactCounter verb="POST" value="" />
-                <ReactCounter verb="PUT" value="" />
-                <ReactCounter verb="PATCH" value="" />
-                <ReactCounter verb="DELETE" value="" />
+                <Pillbox name="GET" value="" />
+                <Pillbox name="POST" value="" />
+                <Pillbox name="PUT" value="" />
+                <Pillbox name="PATCH" value="" />
+                <Pillbox name="DELETE" value="" />
+
+                <h3>Graphs</h3>
+                <Graph />
 
             </div>
         );

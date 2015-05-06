@@ -3,9 +3,9 @@ var React = require('react');
 var Field = React.createClass({
     render: function() {
         return(
-            <h3>
+            <p>
                 {this.props.name}
-            </h3>
+            </p>
         );
     }
 });
@@ -20,15 +20,15 @@ var Descriptor = React.createClass({
     }
 });
 
-var ReactHeader = React.createClass({
+var Pillbox = React.createClass({
     render: function() {
         return(
             <div className="headerBlock">
-                <Field name={this.props.name}/>
+                <Field name={this.props.name + ':'}/>
                 <Descriptor value={this.props.value}/>
             </div>
         );
     }
 });
 
-module.exports = ReactHeader;
+module.exports = Pillbox;
