@@ -27,7 +27,7 @@ var ReactApp = React.createClass({
                 <Pillbox name="Headers" value=""/>
                 <Pillbox name="Content" value=""/>
 
-                <h3>Counters:</h3>
+                <h3>Counters</h3>
 
                 <Pillbox name="GET" value="" />
                 <Pillbox name="POST" value="" />
