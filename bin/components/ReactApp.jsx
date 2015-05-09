@@ -21,19 +21,19 @@ var ReactApp = React.createClass({
 
                 <h3>Current stats</h3>
 
-                <Pillbox name="Last request" value=""/>
-                <Pillbox name="From" value=""/>
-                <Pillbox name="To" value=""/>
-                <Pillbox name="Headers" value=""/>
-                <Pillbox name="Content" value=""/>
+                <Pillbox name="Last request" />
+                <Pillbox name="From" />
+                <Pillbox name="To" />
+                <Pillbox name="Headers" />
+                <Pillbox name="Content" />
 
                 <h3>Counters</h3>
 
-                <Pillbox name="GET" value="" />
-                <Pillbox name="POST" value="" />
-                <Pillbox name="PUT" value="" />
-                <Pillbox name="PATCH" value="" />
-                <Pillbox name="DELETE" value="" />
+                <Pillbox name="GET" />
+                <Pillbox name="POST" />
+                <Pillbox name="PUT" />
+                <Pillbox name="PATCH" />
+                <Pillbox name="DELETE" />
 
                 <h3>Graphs</h3>
                 <Graph />
