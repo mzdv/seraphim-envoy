@@ -2,20 +2,18 @@
 
 var express = require('express');
 var router = express.Router();
-
-require('node-jsx').install();
-
-var React = require('react');
-var App = React.createFactory(require('../bin/components/ReactApp.jsx'));
+var giftwrap = require('../giftwrap');
 
 //GET /
 //Renders the dashboard
 
 router.get('/', function(req, res) {
-    var markup = React.renderToString(App());
-    res.render("index", {
-        markup: markup
-    });
+	res.json({
+		name: "seraphim-envoy",
+		version: giftwrap.version,
+		codename: giftwrap.codename,
+		date: giftwrap.date 
+	});
 });
 
 module.exports = router;
